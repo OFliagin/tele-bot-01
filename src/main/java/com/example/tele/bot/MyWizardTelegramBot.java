@@ -1,5 +1,6 @@
 package com.example.tele.bot;
 
+import org.apache.commons.lang3.StringUtils;
 import org.telegram.telegrambots.bots.DefaultBotOptions;
 import org.telegram.telegrambots.bots.TelegramWebhookBot;
 import org.telegram.telegrambots.meta.api.methods.BotApiMethod;
@@ -39,13 +40,23 @@ public class MyWizardTelegramBot extends TelegramWebhookBot {
 
 
             try {
-                execute(new SendMessage(chat_id, "Hi " + update.getMessage().getText()));
+                execute(new SendMessage(chat_id, getMessage(update.getMessage().getText())));
             } catch (TelegramApiException e) {
                 e.printStackTrace();
             }
         }
 
         return null;
+    }
+
+    private String getMessage(String text) {
+        if (StringUtils.equalsIgnoreCase(text, "hi")) {
+            return "Hello my honey, it's your botLover";
+        }
+        if (StringUtils.endsWithIgnoreCase(text, "куся") || StringUtils.endsWithIgnoreCase(text, "Kucia"))  {
+            return "I very miss you!!!";
+        }
+        return text;
     }
 
 
