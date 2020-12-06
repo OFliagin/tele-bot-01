@@ -14,22 +14,18 @@ import org.telegram.telegrambots.meta.ApiContext;
 @Configuration
 @ConfigurationProperties(prefix = "telegrambot")
 public class BotConfig {
-    private String webHookPath;
     private String botUserName;
     private String botToken;
+    private String webHookPath;
 
     private DefaultBotOptions.ProxyType proxyType;
     private String proxyHost;
     private int proxyPort;
 
     @Bean
-    public MyWizardTelegramBot MySuperTelegramBot() {
+    public MyWizardTelegramBot mySuperTelegramBot() {
         DefaultBotOptions options = ApiContext
                 .getInstance(DefaultBotOptions.class);
-
-        options.setProxyHost(proxyHost);
-        options.setProxyPort(proxyPort);
-        options.setProxyType(proxyType);
 
         MyWizardTelegramBot mySuperTelegramBot = new MyWizardTelegramBot(options);
         mySuperTelegramBot.setBotUserName(botUserName);
