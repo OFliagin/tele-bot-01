@@ -45,7 +45,7 @@ public class FilingProfileHandler implements InputMessageHandler {
 
         if (bootState.equals(BootState.ASK_NAME)) {
             log.debug("state ASK_NAME");
-            reply = messageService.getReplyMessage(chatId, "reply_askName");
+            reply = messageService.getReplyMessage(chatId, "reply.askName");
             cache.setUsersCurrentBotState(userId, BootState.ASK_AGE);
         }
 
@@ -53,41 +53,41 @@ public class FilingProfileHandler implements InputMessageHandler {
         if (bootState.equals(BootState.ASK_AGE)) {
             log.debug("state ASK_AGE");
             profileData.setName(userAnswer);
-            reply = messageService.getReplyMessage(chatId, "reply_askAge");
+            reply = messageService.getReplyMessage(chatId, "reply.askAge");
             cache.setUsersCurrentBotState(userId, BootState.ASK_GENDER);
         }
 
         if (bootState.equals(BootState.ASK_GENDER)) {
             log.debug("state ASK_GENDER");
             profileData.setAge(Integer.parseInt(userAnswer));
-            reply = messageService.getReplyMessage(chatId, "reply_askGender");
+            reply = messageService.getReplyMessage(chatId, "reply.askGender");
             cache.setUsersCurrentBotState(userId, BootState.ASK_NUMBER);
         }
 
         if (bootState.equals(BootState.ASK_NUMBER)) {
             log.debug("state ASK_NUMBER");
             profileData.setGender(userAnswer);
-            reply = messageService.getReplyMessage(chatId, "reply_askNumber");
+            reply = messageService.getReplyMessage(chatId, "reply.askNumber");
             cache.setUsersCurrentBotState(userId, BootState.ASK_COLOR);
         }
         if (bootState.equals(BootState.ASK_COLOR)) {
             log.debug("state ASK_COLOR");
             profileData.setNumber(Integer.parseInt(userAnswer));
-            reply = messageService.getReplyMessage(chatId, "reply_askColor");
+            reply = messageService.getReplyMessage(chatId, "reply.askColor");
             cache.setUsersCurrentBotState(userId, BootState.ASK_MOVIE);
         }
 
         if (bootState.equals(BootState.ASK_MOVIE)) {
             log.debug("state ASK_MOVIE");
             profileData.setColor(userAnswer);
-            reply = messageService.getReplyMessage(chatId, "reply_askMovie");
+            reply = messageService.getReplyMessage(chatId, "reply.askMovie");
             cache.setUsersCurrentBotState(userId, BootState.ASK_SONG);
         }
 
         if (bootState.equals(BootState.ASK_SONG)) {
             log.debug("state ASK_SONG");
             profileData.setMovie(userAnswer);
-            reply = messageService.getReplyMessage(chatId, "reply_askSong");
+            reply = messageService.getReplyMessage(chatId, "reply.askSong");
             cache.setUsersCurrentBotState(userId, BootState.PROFILE_FILLED);
         }
         if (bootState.equals(BootState.PROFILE_FILLED)) {
