@@ -41,7 +41,7 @@ public class TelegramFacade {
         BootState bootState;
 
         switch (inputMsg) {
-            case "/stsrt" :
+            case "/start" :
                 bootState = BootState.ASK_DESTINY;
                 break;
             case "Получить предсказание" :

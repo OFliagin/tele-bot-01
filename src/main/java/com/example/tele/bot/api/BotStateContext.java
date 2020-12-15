@@ -17,12 +17,17 @@ public class BotStateContext {
     }
 
 
-    InputMessageHandler findMessageHandler(BootState currentState) {
+    public InputMessageHandler findMessageHandler(BootState currentState) {
         if (isFillingProfileState(currentState)) {
             return messageHandlers.get(BootState.FILLING_PROFILE);
         }
 
         return messageHandlers.get(currentState);
+    }
+
+    public SendMessage processInputMessage(BootState currentState, Message message) {
+        InputMessageHandler currentMessageHandler = findMessageHandler(currentState);
+        return currentMessageHandler.handler(message);
     }
 
     private boolean isFillingProfileState(BootState currentState) {
@@ -40,11 +45,6 @@ public class BotStateContext {
                     return true;
             default: return false;
         }
-    }
-
-    //TODO IMPL
-    public SendMessage processInputMessage(BootState bootState, Message message) {
-        return null;
     }
 
 }
