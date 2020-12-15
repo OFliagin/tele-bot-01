@@ -26,7 +26,7 @@ public class AskDestinyHandler implements InputMessageHandler {
         log.debug("handler {}", inputMessage);
         int userId = inputMessage.getFrom().getId();
         long chatId = inputMessage.getChatId();
-        SendMessage replyToUser = messageService.getReplyMessage(chatId, "replay.askDestiny");
+        SendMessage replyToUser = messageService.getReplyMessage(chatId, "reply.askDestiny");
         log.debug("replyToUser {}", replyToUser);
         cache.setUsersCurrentBotState(userId, BootState.FILLING_PROFILE);
         return replyToUser;
