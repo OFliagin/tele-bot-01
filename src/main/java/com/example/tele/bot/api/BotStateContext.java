@@ -1,5 +1,6 @@
 package com.example.tele.bot.api;
 
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
 import org.telegram.telegrambots.meta.api.objects.Message;
@@ -9,6 +10,7 @@ import java.util.List;
 import java.util.Map;
 
 @Component
+@Slf4j
 public class BotStateContext {
     Map<BootState, InputMessageHandler> messageHandlers = new HashMap<>();
 
@@ -18,11 +20,16 @@ public class BotStateContext {
 
 
     public InputMessageHandler findMessageHandler(BootState currentState) {
+        log.debug("findMessageHandler for currentState {}", currentState);
+        InputMessageHandler handler = null;
         if (isFillingProfileState(currentState)) {
-            return messageHandlers.get(BootState.FILLING_PROFILE);
+            handler = messageHandlers.get(BootState.FILLING_PROFILE);
+        } else {
+            handler = messageHandlers.get(currentState);
         }
 
-        return messageHandlers.get(currentState);
+        log.debug("handler {}", handler.getHandlerName());
+        return handler;
     }
 
     public SendMessage processInputMessage(BootState currentState, Message message) {

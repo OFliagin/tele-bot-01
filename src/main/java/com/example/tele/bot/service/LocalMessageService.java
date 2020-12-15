@@ -1,5 +1,6 @@
 package com.example.tele.bot.service;
 
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.MessageSource;
@@ -8,6 +9,7 @@ import org.springframework.stereotype.Service;
 import java.util.Locale;
 
 @Service
+@Slf4j
 public class LocalMessageService {
 
     private final Locale locale;
@@ -20,7 +22,10 @@ public class LocalMessageService {
     }
 
     public String getMessage(String message) {
-        return messageSource.getMessage(message, null, locale);
+        log.debug("get message [{}] for local {}", message ,locale.getLanguage());
+        String res = messageSource.getMessage(message, null, locale);
+        log.debug("got message [{}] for local {}", res ,locale.getLanguage());
+        return res;
     }
 
     public String getMessage(String message, Object... args) {
