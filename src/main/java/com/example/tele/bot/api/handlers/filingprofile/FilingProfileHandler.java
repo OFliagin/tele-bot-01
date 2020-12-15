@@ -41,7 +41,7 @@ public class FilingProfileHandler implements InputMessageHandler {
         BootState bootState = cache.getUsersCurrentBotState(userId);
         SendMessage replay = null;
 
-        log.debug("userAnswer {}, userId {}, chatId {}", userAnswer, userId, chatId);
+        log.debug("userAnswer {}, userId {}, chatId {}, bootState {}", userAnswer, userId, chatId, bootState);
 
         if (bootState.equals(BootState.ASK_NAME)) {
             log.debug("state ASK_NAME");
