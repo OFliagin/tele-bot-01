@@ -1,8 +1,10 @@
-package com.example.tele.bot.config;
+package com.example.tele.bot.appconfig;
 
 import com.example.tele.bot.MyWizardTelegramBot;
+import com.example.tele.bot.api.TelegramFacade;
 import lombok.Getter;
 import lombok.Setter;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -22,12 +24,20 @@ public class BotConfig {
     private String proxyHost;
     private int proxyPort;
 
+    private final TelegramFacade telegramFacade;
+
+    @Autowired
+    public BotConfig(TelegramFacade telegramFacade) {
+        this.telegramFacade = telegramFacade;
+    }
+
     @Bean
     public MyWizardTelegramBot mySuperTelegramBot() {
         DefaultBotOptions options = ApiContext
                 .getInstance(DefaultBotOptions.class);
 
-        MyWizardTelegramBot mySuperTelegramBot = new MyWizardTelegramBot(options);
+
+        MyWizardTelegramBot mySuperTelegramBot = new MyWizardTelegramBot(options, telegramFacade);
         mySuperTelegramBot.setBotUserName(botUserName);
         mySuperTelegramBot.setBotToken(botToken);
         mySuperTelegramBot.setWebHookPath(webHookPath);
