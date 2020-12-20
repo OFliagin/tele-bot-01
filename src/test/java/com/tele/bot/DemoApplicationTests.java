@@ -1,4 +1,4 @@
-package com.example.tele.bot;
+package com.tele.bot;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

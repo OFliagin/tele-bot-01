@@ -1,9 +1,9 @@
-package com.example.tele.bot.api.handlers.filingprofile;
+package com.tele.bot.api.handlers.filingprofile;
 
-import com.example.tele.bot.api.BootState;
-import com.example.tele.bot.api.InputMessageHandler;
-import com.example.tele.bot.cache.DataCache;
-import com.example.tele.bot.service.ReplyMessageService;
+import com.tele.bot.api.BootState;
+import com.tele.bot.api.InputMessageHandler;
+import com.tele.bot.cache.DataCache;
+import com.tele.bot.service.ReplyMessageService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;

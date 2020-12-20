@@ -1,6 +1,6 @@
-package com.example.tele.bot.api;
+package com.tele.bot.api;
 
-import com.example.tele.bot.cache.DataCache;
+import com.tele.bot.cache.DataCache;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;

@@ -4,7 +4,7 @@ plugins {
     id 'java'
 }
 
-group = 'com.example.tele.bot'
+group = 'com.tele.bot'
 version = '0.0.1-SNAPSHOT'
 sourceCompatibility = '11'
 

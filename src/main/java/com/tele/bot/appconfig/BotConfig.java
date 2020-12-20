@@ -1,7 +1,7 @@
-package com.example.tele.bot.appconfig;
+package com.tele.bot.appconfig;
 
-import com.example.tele.bot.MyWizardTelegramBot;
-import com.example.tele.bot.api.TelegramFacade;
+import com.tele.bot.MyWizardTelegramBot;
+import com.tele.bot.api.TelegramFacade;
 import lombok.Getter;
 import lombok.Setter;
 import org.springframework.beans.factory.annotation.Autowired;

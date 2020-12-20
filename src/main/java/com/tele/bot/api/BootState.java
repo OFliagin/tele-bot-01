@@ -1,4 +1,4 @@
-package com.example.tele.bot.api;
+package com.tele.bot.api;
 
 public enum BootState {
     FILLING_PROFILE, SHOW_HELP_MENU, ASK_AGE, ASK_NAME, ASK_GENDER, ASK_NUMBER, ASK_MOVIE, ASK_COLOR, PROFILE_FILLED, ASK_SONG, ASK_DESTINY

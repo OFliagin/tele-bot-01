@@ -1,6 +1,6 @@
-package com.example.tele.bot;
+package com.tele.bot;
 
-import com.example.tele.bot.api.TelegramFacade;
+import com.tele.bot.api.TelegramFacade;
 import org.telegram.telegrambots.bots.DefaultBotOptions;
 import org.telegram.telegrambots.bots.TelegramWebhookBot;
 import org.telegram.telegrambots.meta.api.methods.BotApiMethod;

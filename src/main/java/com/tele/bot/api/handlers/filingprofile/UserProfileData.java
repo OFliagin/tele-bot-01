@@ -1,4 +1,4 @@
-package com.example.tele.bot.api.handlers.filingprofile;
+package com.tele.bot.api.handlers.filingprofile;
 
 import lombok.AccessLevel;
 import lombok.Data;

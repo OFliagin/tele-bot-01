@@ -1,4 +1,4 @@
-package com.example.tele.bot.service;
+package com.tele.bot.service;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;

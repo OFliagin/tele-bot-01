@@ -1,6 +1,6 @@
-package com.example.tele.bot.controller;
+package com.tele.bot.controller;
 
-import com.example.tele.bot.MyWizardTelegramBot;
+import com.tele.bot.MyWizardTelegramBot;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.PostMapping;

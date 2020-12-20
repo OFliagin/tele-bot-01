@@ -1,4 +1,4 @@
-package com.example.tele.bot.api;
+package com.tele.bot.api;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;

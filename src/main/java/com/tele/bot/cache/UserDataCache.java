@@ -1,7 +1,7 @@
-package com.example.tele.bot.cache;
+package com.tele.bot.cache;
 
-import com.example.tele.bot.api.BootState;
-import com.example.tele.bot.api.handlers.filingprofile.UserProfileData;
+import com.tele.bot.api.BootState;
+import com.tele.bot.api.handlers.filingprofile.UserProfileData;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 
