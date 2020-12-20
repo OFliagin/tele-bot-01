@@ -1,6 +1,5 @@
 package com.mywizard_bot.botapi;
 
-import com.mywizard_bot.botapi.BotState;
 import com.mywizard_bot.botapi.BotStateContext;
 
 import com.mywizard_bot.cache.DataCache;
