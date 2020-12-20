@@ -1,8 +1,12 @@
-package com.tele.bot.api.handlers.filingprofile;
+package com.mywizard_bot.botapi.handlers.fillingprofile;
 
 import lombok.AccessLevel;
 import lombok.Data;
 import lombok.experimental.FieldDefaults;
+
+/**
+ * Данные анкеты пользователя
+ */
 
 @Data
 @FieldDefaults(level = AccessLevel.PRIVATE)
@@ -15,4 +19,3 @@ public class UserProfileData {
     int age;
     int number;
 }
-
