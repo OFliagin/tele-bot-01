@@ -4,9 +4,6 @@ import org.springframework.stereotype.Service;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
 
 
-/**
- * Формирует готовые ответные сообщения в чат.
- */
 @Service
 public class ReplyMessagesService {
 

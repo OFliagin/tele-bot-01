@@ -10,10 +10,6 @@ import com.mywizard_bot.cache.UserDataCache;
 import com.mywizard_bot.service.ReplyMessagesService;
 
 
-/**
- * Спрашивает пользователя- хочет ли он получить предсказание.
- */
-
 @Slf4j
 @Component
 public class AskDestinyHandler implements InputMessageHandler {

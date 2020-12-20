@@ -10,10 +10,6 @@ import com.mywizard_bot.cache.UserDataCache;
 import com.mywizard_bot.service.ReplyMessagesService;
 
 
-/**
- * Формирует анкету пользователя.
- */
-
 @Slf4j
 @Component
 public class FillingProfileHandler implements InputMessageHandler {
