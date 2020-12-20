@@ -1,6 +1,7 @@
 package com.mywizard_bot.botapi.handlers.fillingprofile;
 
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.lang3.math.NumberUtils;
 import org.springframework.stereotype.Component;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
 import org.telegram.telegrambots.meta.api.objects.Message;
@@ -57,9 +58,13 @@ public class FillingProfileHandler implements InputMessageHandler {
         }
 
         if (botState.equals(BotState.ASK_GENDER)) {
-            replyToUser = messagesService.getReplyMessage(chatId, "reply.askGender");
-            profileData.setAge(Integer.parseInt(usersAnswer));
-            userDataCache.setUsersCurrentBotState(userId, BotState.ASK_NUMBER);
+            if (NumberUtils.isNumber(usersAnswer)) {
+                replyToUser = messagesService.getReplyMessage(chatId, "reply.askGender");
+                profileData.setAge(Integer.parseInt(usersAnswer));
+                userDataCache.setUsersCurrentBotState(userId, BotState.ASK_NUMBER);
+            } else {
+                replyToUser = messagesService.getReplyMessage(chatId, "reply.askAge.repeated");
+            }
         }
 
         if (botState.equals(BotState.ASK_NUMBER)) {
@@ -69,9 +74,14 @@ public class FillingProfileHandler implements InputMessageHandler {
         }
 
         if (botState.equals(BotState.ASK_COLOR)) {
+            if (NumberUtils.isNumber(usersAnswer)) {
             replyToUser = messagesService.getReplyMessage(chatId, "reply.askColor");
             profileData.setNumber(Integer.parseInt(usersAnswer));
-            userDataCache.setUsersCurrentBotState(userId, BotState.ASK_MOVIE);
+            userDataCache.setUsersCurrentBotState(userId, BotState.ASK_MOVIE); }
+            else {
+                replyToUser = messagesService.getReplyMessage(chatId, "reply.askNumber.repeated");
+
+            }
         }
 
         if (botState.equals(BotState.ASK_MOVIE)) {
