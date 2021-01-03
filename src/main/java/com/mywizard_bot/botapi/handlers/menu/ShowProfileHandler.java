@@ -4,7 +4,7 @@ import com.mywizard_bot.botapi.BotState;
 import com.mywizard_bot.botapi.InputMessageHandler;
 import com.mywizard_bot.botapi.handlers.fillingprofile.UserProfileData;
 import com.mywizard_bot.cache.DataCache;
-import com.mywizard_bot.cache.UserDataCache;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
 import org.telegram.telegrambots.meta.api.objects.Message;
@@ -12,7 +12,12 @@ import org.telegram.telegrambots.meta.api.objects.Message;
 @Component
 public class ShowProfileHandler  implements InputMessageHandler {
 
-    private DataCache userDataCache;
+    private final DataCache userDataCache;
+
+    @Autowired
+    public ShowProfileHandler(DataCache userDataCache) {
+        this.userDataCache = userDataCache;
+    }
 
     @Override
     public SendMessage handle(Message message) {

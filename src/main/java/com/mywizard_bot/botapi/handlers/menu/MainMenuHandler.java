@@ -5,6 +5,7 @@ import com.mywizard_bot.botapi.BotState;
 import com.mywizard_bot.botapi.InputMessageHandler;
 import com.mywizard_bot.service.MainMenuService;
 import com.mywizard_bot.service.ReplyMessagesService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
 import org.telegram.telegrambots.meta.api.objects.Message;
@@ -14,6 +15,7 @@ public class MainMenuHandler implements InputMessageHandler {
     private ReplyMessagesService messagesService;
     private MainMenuService mainMenuService;
 
+    @Autowired
     public MainMenuHandler(ReplyMessagesService messagesService, MainMenuService mainMenuService) {
         this.messagesService = messagesService;
         this.mainMenuService = mainMenuService;
