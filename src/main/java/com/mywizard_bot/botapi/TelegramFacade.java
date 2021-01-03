@@ -30,23 +30,20 @@ public class TelegramFacade {
     }
 
     public BotApiMethod<?> handleUpdate(Update update) {
-
         SendMessage replyMessage = null;
 
         if (update.hasCallbackQuery()) {
-            CallbackQuery callvackQuery = update.getCallbackQuery();
-
-            log.info("New callbackQuery from user {}, userId {}, with data {}",
-                    update.getCallbackQuery().getFrom().getUserName(),
-                    update.getCallbackQuery().getFrom().getId(),
-                    update.getCallbackQuery().getData());
-
-            return processCallbackQuery(callvackQuery);
+            CallbackQuery callbackQuery = update.getCallbackQuery();
+            log.info("New callbackQuery from User: {}, userId: {}, with data: {}", update.getCallbackQuery().getFrom().getUserName(),
+                    callbackQuery.getFrom().getId(), update.getCallbackQuery().getData());
+            return processCallbackQuery(callbackQuery);
         }
 
+
         Message message = update.getMessage();
-        if (Objects.nonNull(message) && message.hasText()) {
-            log.info("New message from user : {}, chatId : {}, with text : {}", message.getFrom().getUserName(), message.getChatId(), message.getText());
+        if (message != null && message.hasText()) {
+            log.info("New message from User:{}, userId: {}, chatId: {},  with text: {}",
+                    message.getFrom().getUserName(), message.getFrom().getId(), message.getChatId(), message.getText());
             replyMessage = handleInputMessage(message);
         }
 
