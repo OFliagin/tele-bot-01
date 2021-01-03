@@ -12,15 +12,25 @@ import java.util.List;
 
 @Service
 public class MainMenuService {
-    public BotApiMethod<?> getMainMenuMessage(long chatId, String textMessage) {
+
+    public SendMessage getMainMenuMessage(long chatId, String textMessage) {
         final ReplyKeyboardMarkup replayKeyboardMarkup = getMainMenuKeyboard();
         final SendMessage mainMenuMessage =
                 createMessageWithKeyboard(chatId, textMessage, replayKeyboardMarkup);
         return mainMenuMessage;
     }
 
-    private SendMessage createMessageWithKeyboard(long chatId, String textMessage, ReplyKeyboardMarkup replayKeyboardMarkup) {
-        return null;
+    private SendMessage createMessageWithKeyboard(final long chatId,
+                                                  String textMessage,
+                                                  final ReplyKeyboardMarkup replyKeyboardMarkup) {
+        final SendMessage sendMessage = new SendMessage();
+        sendMessage.enableMarkdown(true);
+        sendMessage.setChatId(chatId);
+        sendMessage.setText(textMessage);
+        if (replyKeyboardMarkup != null) {
+            sendMessage.setReplyMarkup(replyKeyboardMarkup);
+        }
+        return sendMessage;
     }
 
     private ReplyKeyboardMarkup getMainMenuKeyboard() {

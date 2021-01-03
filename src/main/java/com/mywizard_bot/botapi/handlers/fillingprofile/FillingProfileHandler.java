@@ -87,7 +87,6 @@ public class FillingProfileHandler implements InputMessageHandler {
             userDataCache.setUsersCurrentBotState(userId, BotState.ASK_MOVIE); }
             else {
                 replyToUser = messagesService.getReplyMessage(chatId, "reply.askNumber.repeated");
-
             }
         }
 
@@ -105,8 +104,8 @@ public class FillingProfileHandler implements InputMessageHandler {
 
         if (botState.equals(BotState.PROFILE_FILLED)) {
             profileData.setSong(usersAnswer);
-            userDataCache.setUsersCurrentBotState(userId, BotState.ASK_DESTINY);
-            replyToUser = new SendMessage(chatId, String.format("%s %s", "Данные по вашей анкете", profileData));
+            userDataCache.setUsersCurrentBotState(userId, BotState.SHOW_MAIN_MENU);
+            replyToUser = messagesService.getReplyMessage(chatId, "reply.profileFilled");
         }
 
         userDataCache.saveUserProfileData(userId, profileData);
