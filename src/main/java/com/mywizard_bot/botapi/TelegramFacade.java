@@ -57,25 +57,28 @@ public class TelegramFacade {
         String inputMsg = message.getText();
         int userId = message.getFrom().getId();
         SendMessage replyMessage;
-        BotState bootState;
+        BotState botState;
 
         switch (inputMsg) {
             case "/start":
-                bootState = BotState.ASK_DESTINY;
+                botState = BotState.ASK_DESTINY;
                 break;
             case "Получить предсказание":
-                bootState = BotState.FILLING_PROFILE;
+                botState = BotState.FILLING_PROFILE;
+                break;
+            case "Моя анкета":
+                botState = BotState.SHOW_USER_PROFILE;
                 break;
             case "Помощь":
-                bootState = BotState.SHOW_HELP_MENU;
+                botState = BotState.SHOW_HELP_MENU;
                 break;
             default:
-                bootState = userDataCache.getUsersCurrentBotState(userId);
+                botState = userDataCache.getUsersCurrentBotState(userId);
                 break;
         }
 
-        userDataCache.setUsersCurrentBotState(userId, bootState);
-        replyMessage = botStateContext.processInputMessage(bootState, message);
+        userDataCache.setUsersCurrentBotState(userId, botState);
+        replyMessage = botStateContext.processInputMessage(botState, message);
         return replyMessage;
     }
 
