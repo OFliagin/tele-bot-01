@@ -65,9 +65,8 @@ public class FillingProfileHandler implements InputMessageHandler {
 
         if (botState.equals(BotState.ASK_GENDER)) {
             if (NumberUtils.isNumber(usersAnswer)) {
-                replyToUser = messagesService.getReplyMessage(chatId, "reply.askGender");
                 profileData.setAge(Integer.parseInt(usersAnswer));
-                userDataCache.setUsersCurrentBotState(userId, BotState.ASK_NUMBER);
+                replyToUser = messagesService.getReplyMessage(chatId, "reply.askGender");
                 replyToUser.setReplyMarkup(getGenderButtonsMarkup());
 
             } else {
@@ -134,10 +133,7 @@ public class FillingProfileHandler implements InputMessageHandler {
         inlineKeyboardMarkup.setKeyboard(rowList);
 
         return inlineKeyboardMarkup;
-
     }
-
-
 }
 
 

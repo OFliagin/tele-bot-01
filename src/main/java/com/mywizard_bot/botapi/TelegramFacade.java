@@ -82,25 +82,23 @@ public class TelegramFacade {
     private BotApiMethod<?> processCallbackQuery(CallbackQuery buttonQuery) {
         final long chatId = buttonQuery.getMessage().getChatId();
         final int userId = buttonQuery.getFrom().getId();
+        BotApiMethod<?> callBackAnswer = mainMenuService.getMainMenuMessage(chatId, "Воспользуйтесь главным меню");
 
-        BotApiMethod<?> callBackAnswer = mainMenuService.getMainMenuMessage(chatId, "Воспользуйтесь главным меню.");
         if (buttonQuery.getData().equals("buttonYes")) {
-            callBackAnswer = new SendMessage(chatId, "как тебя зовут");
+            callBackAnswer = new SendMessage(chatId, "Как тебя зовут ?");
             userDataCache.setUsersCurrentBotState(userId, BotState.ASK_AGE);
         } else if (buttonQuery.getData().equals("buttonNo")) {
-            callBackAnswer = sendAnswerCallbackQuery("Возвращайся когда будешь готов", false, buttonQuery);
+            callBackAnswer = sendAnswerCallbackQuery("Возвращайся, когда будешь готов", false, buttonQuery);
         } else if (buttonQuery.getData().equals("buttonIwillThink")) {
             callBackAnswer = sendAnswerCallbackQuery("Данная кнопка не поддерживается", true, buttonQuery);
         }
 
-        if (buttonQuery.getData().equals("buttonMan")) {
+        else if (buttonQuery.getData().equals("buttonMan")) {
             UserProfileData userProfileData = userDataCache.getUserProfileData(userId);
             userProfileData.setGender("М");
             userDataCache.saveUserProfileData(userId, userProfileData);
-            callBackAnswer = new SendMessage(chatId, "Твоя любимая цифра");
-
-
             userDataCache.setUsersCurrentBotState(userId, BotState.ASK_COLOR);
+            callBackAnswer = new SendMessage(chatId, "Твоя любимая цифра");
         } else if (buttonQuery.getData().equals("buttonWoman")) {
             UserProfileData userProfileData = userDataCache.getUserProfileData(userId);
             userProfileData.setGender("Ж");
@@ -111,7 +109,6 @@ public class TelegramFacade {
         } else {
             userDataCache.setUsersCurrentBotState(userId, BotState.SHOW_MAIN_MENU);
         }
-
         return callBackAnswer;
     }
 
