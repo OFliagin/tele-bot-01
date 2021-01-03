@@ -9,6 +9,12 @@ import com.mywizard_bot.botapi.BotState;
 import com.mywizard_bot.botapi.InputMessageHandler;
 import com.mywizard_bot.cache.UserDataCache;
 import com.mywizard_bot.service.ReplyMessagesService;
+import org.telegram.telegrambots.meta.api.objects.replykeyboard.InlineKeyboardMarkup;
+import org.telegram.telegrambots.meta.api.objects.replykeyboard.ReplyKeyboard;
+import org.telegram.telegrambots.meta.api.objects.replykeyboard.buttons.InlineKeyboardButton;
+
+import java.util.ArrayList;
+import java.util.List;
 
 
 @Slf4j
@@ -62,6 +68,8 @@ public class FillingProfileHandler implements InputMessageHandler {
                 replyToUser = messagesService.getReplyMessage(chatId, "reply.askGender");
                 profileData.setAge(Integer.parseInt(usersAnswer));
                 userDataCache.setUsersCurrentBotState(userId, BotState.ASK_NUMBER);
+                replyToUser.setReplyMarkup(getGenderButtonsMarkup());
+
             } else {
                 replyToUser = messagesService.getReplyMessage(chatId, "reply.askAge.repeated");
             }
@@ -105,6 +113,28 @@ public class FillingProfileHandler implements InputMessageHandler {
         userDataCache.saveUserProfileData(userId, profileData);
 
         return replyToUser;
+    }
+
+    private ReplyKeyboard getGenderButtonsMarkup() {
+        InlineKeyboardMarkup inlineKeyboardMarkup = new InlineKeyboardMarkup();
+        InlineKeyboardButton buttonGenderMan = new InlineKeyboardButton().setText("М");
+        InlineKeyboardButton buttonGenderWoman = new InlineKeyboardButton().setText("Ж");
+
+        //Every button must have callBackData, or else not work !
+        buttonGenderMan.setCallbackData("buttonMan");
+        buttonGenderWoman.setCallbackData("buttonWoman");
+
+        List<InlineKeyboardButton> keyboardButtonsRow1 = new ArrayList<>();
+        keyboardButtonsRow1.add(buttonGenderMan);
+        keyboardButtonsRow1.add(buttonGenderWoman);
+
+        List<List<InlineKeyboardButton>> rowList = new ArrayList<>();
+        rowList.add(keyboardButtonsRow1);
+
+        inlineKeyboardMarkup.setKeyboard(rowList);
+
+        return inlineKeyboardMarkup;
+
     }
 
 
