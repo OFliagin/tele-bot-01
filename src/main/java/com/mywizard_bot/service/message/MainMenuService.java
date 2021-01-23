@@ -1,4 +1,4 @@
-package com.mywizard_bot.service;
+package com.mywizard_bot.service.message;
 
 import org.springframework.stereotype.Service;
 import org.telegram.telegrambots.meta.api.methods.BotApiMethod;

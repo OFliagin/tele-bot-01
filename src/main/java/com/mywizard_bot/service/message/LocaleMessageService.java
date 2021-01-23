@@ -1,5 +1,7 @@
-package com.mywizard_bot.service;
+package com.mywizard_bot.service.message;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.MessageSource;
 import org.springframework.stereotype.Service;
@@ -11,7 +13,8 @@ public class LocaleMessageService {
     private final Locale locale;
     private final MessageSource messageSource;
 
-    public LocaleMessageService(@Value("${localeTag}") String localeTag, MessageSource messageSource) {
+    @Autowired
+    public LocaleMessageService(@Value("${localeTag}") String localeTag, @Qualifier("messageSources") MessageSource messageSource) {
         this.messageSource = messageSource;
         this.locale = Locale.forLanguageTag(localeTag);
     }
