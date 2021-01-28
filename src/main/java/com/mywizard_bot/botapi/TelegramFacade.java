@@ -2,7 +2,7 @@ package com.mywizard_bot.botapi;
 
 import com.mywizard_bot.botapi.handlers.fillingprofile.UserProfileData;
 import com.mywizard_bot.cache.DataCache;
-import com.mywizard_bot.service.MainMenuService;
+import com.mywizard_bot.service.message.MainMenuService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -12,8 +12,6 @@ import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
 import org.telegram.telegrambots.meta.api.objects.CallbackQuery;
 import org.telegram.telegrambots.meta.api.objects.Message;
 import org.telegram.telegrambots.meta.api.objects.Update;
-
-import java.util.Objects;
 
 @Component
 @Slf4j

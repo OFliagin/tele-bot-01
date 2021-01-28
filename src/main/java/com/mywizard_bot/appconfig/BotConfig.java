@@ -9,8 +9,6 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.support.ReloadableResourceBundleMessageSource;
 import org.telegram.telegrambots.bots.DefaultBotOptions;
 import org.telegram.telegrambots.meta.ApiContext;
-import com.mywizard_bot.MyWizardTelegramBot;
-import com.mywizard_bot.botapi.TelegramFacade;
 
 
 @Setter
@@ -18,26 +16,15 @@ import com.mywizard_bot.botapi.TelegramFacade;
 @Configuration
 @ConfigurationProperties(prefix = "telegrambot")
 public class BotConfig {
-    private String webHookPath;
-    private String botUserName;
-    private String botToken;
-
 
     @Bean
-    public MyWizardTelegramBot myWizardTelegramBot(TelegramFacade telegramFacade) {
-        DefaultBotOptions options = ApiContext
+    public DefaultBotOptions options() {
+        return ApiContext
                 .getInstance(DefaultBotOptions.class);
-
-        MyWizardTelegramBot myWizardTelegramBot = new MyWizardTelegramBot(options, telegramFacade);
-        myWizardTelegramBot.setBotUserName(botUserName);
-        myWizardTelegramBot.setBotToken(botToken);
-        myWizardTelegramBot.setWebHookPath(webHookPath);
-
-        return myWizardTelegramBot;
     }
 
     @Bean
-    public MessageSource messageSource() {
+    public MessageSource messageSources() {
         ReloadableResourceBundleMessageSource messageSource
                 = new ReloadableResourceBundleMessageSource();
 

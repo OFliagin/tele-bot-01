@@ -1,4 +1,4 @@
-package com.mywizard_bot;
+package com.mywizard_bot.model;
 
 
 import org.telegram.telegrambots.bots.DefaultBotOptions;
@@ -9,7 +9,7 @@ import org.telegram.telegrambots.meta.api.objects.Update;
 import com.mywizard_bot.botapi.TelegramFacade;
 
 
-public class MyWizardTelegramBot extends TelegramWebhookBot {
+public class WizardTelegramBot extends TelegramWebhookBot {
     private String webHookPath;
     private String botUserName;
     private String botToken;
@@ -17,7 +17,7 @@ public class MyWizardTelegramBot extends TelegramWebhookBot {
     private TelegramFacade telegramFacade;
 
 
-    public MyWizardTelegramBot(DefaultBotOptions botOptions, TelegramFacade telegramFacade) {
+    public WizardTelegramBot(DefaultBotOptions botOptions, TelegramFacade telegramFacade) {
         super(botOptions);
         this.telegramFacade = telegramFacade;
     }

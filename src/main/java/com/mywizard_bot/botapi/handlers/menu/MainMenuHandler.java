@@ -3,8 +3,8 @@ package com.mywizard_bot.botapi.handlers.menu;
 
 import com.mywizard_bot.botapi.BotState;
 import com.mywizard_bot.botapi.InputMessageHandler;
-import com.mywizard_bot.service.MainMenuService;
-import com.mywizard_bot.service.ReplyMessagesService;
+import com.mywizard_bot.service.message.MainMenuService;
+import com.mywizard_bot.service.message.ReplyMessagesService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
